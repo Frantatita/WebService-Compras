@@ -21,6 +21,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web-services</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -96,6 +102,31 @@
 					<sources>
 						<source>${project.basedir}/src/main/resources/compras.xsd</source>
 					</sources>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>com.sun.xml.ws</groupId>
+				<artifactId>jaxws-maven-plugin</artifactId>
+				<version>3.0.0</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsimport</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<packageName>xx.mx.uv.consumo.wsdl</packageName>
+					<!-- Especifica la ruta local del archivo WSDL remoto -->
+					<!--<wsdlUrls>
+						<wsdlUrl>http://presupuestodespliege-production.up.railway.app/Presupuesto.dran</wsdlUrl>
+					</wsdlUrls>-->
+					<wsdlFiles>
+					 <!--Especifica la ruta local del archivo WSDL local -->
+						<wsdlFile>${project.basedir}/src/main/resources/presupuesto.wsdl</wsdlFile>
+					</wsdlFiles>
+					<sourceDestDir>${project.basedir}/src/main/java</sourceDestDir>
 				</configuration>
 			</plugin>
 

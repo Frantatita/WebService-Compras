@@ -1,5 +1,6 @@
 package com.example.compras;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +39,13 @@ public class ComprasEndPoint {
 
     @Autowired
     private SeguimientoCompraRepository ordenSeguimientoRepository; // Inyecta tu repositorio de SeguimientoCompra
+
+    private final ClaseCliente cliente; // Inyecta una instancia de ClaseCliente
+
+    @Autowired
+    public ComprasEndPoint(ClaseCliente cliente) {
+        this.cliente = cliente;
+    }
 
     @PayloadRoot(localPart = "AgregarProductoAlCarritoRequest", namespace = "t4is.uv.mx/compras")
     @ResponsePayload
@@ -112,31 +120,39 @@ public class ComprasEndPoint {
 
         // Obtener datos de la solicitud
         Integer idOrdenCompra = request.getIdOrden();
-        
+
         // Convertir el idOrdenCompra de Integer a Long
         Long idOrdenCompraLong = Long.valueOf(idOrdenCompra);
-        
+
         // Buscar la OrdenCompra por ID utilizando el repositorio directamente
         Optional<OrdenCompra> ordenOpt = ordenCompraRepository.findById(idOrdenCompraLong);
         if (!ordenOpt.isPresent()) {
             response.setEstado("Orden de compra no encontrada con ID: " + idOrdenCompra);
             return response;
         }
-        
+
         OrdenCompra ordenCompra = ordenOpt.get();
-        
+
         // Crear una nueva entrada de SeguimientoCompra
         SeguimientoCompra seguimientoCompra = new SeguimientoCompra();
         seguimientoCompra.setOrdenCompra(ordenCompra);
         seguimientoCompra.setEstado(ordenCompra.getEstado());
         seguimientoCompra.setFecha(new java.sql.Date(ordenCompra.getFecha().getTime()));
         seguimientoCompra.setNombre(ordenCompra.getNombreCliente());
-        
+
+        Carrito carrito = ordenCompra.getCarrito();
+        int cantidad = carrito.getCantidad();
+        double precio = carrito.getPrecio();
+
+        double monto = cantidad * precio;
+        BigDecimal monto2 = BigDecimal.valueOf(monto);
+
+        cliente.quitarPresupuesto(1, monto2);
         // Guardar el seguimiento
         ordenSeguimientoRepository.save(seguimientoCompra);
 
         // Construir la respuesta
-        //  response.setEstado("Seguimiento de compra creado exitosamente");
+        // response.setEstado("Seguimiento de compra creado exitosamente");
         response.setEstado("Estado: " + seguimientoCompra.getEstado() +
                 ", Fecha: " + seguimientoCompra.getFecha() +
                 ", Nombre: " + seguimientoCompra.getNombre());
