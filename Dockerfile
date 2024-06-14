@@ -11,4 +11,4 @@ WORKDIR /
 EXPOSE 8080
 
 # Comando para ejecutar la aplicación Spring Boot cuando el contenedor se inicie
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "compras-0.0.1-SNAPSHOT.jar"]
