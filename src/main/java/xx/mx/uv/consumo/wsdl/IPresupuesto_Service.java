@@ -17,7 +17,7 @@ import jakarta.xml.ws.WebServiceFeature;
  * Generated source version: 3.0
  * 
  */
-@WebServiceClient(name = "iPresupuesto", targetNamespace = "http://tempuri.org/", wsdlLocation = "file:/C:/Users/juanl/Desktop/WebService-Compras/src/main/resources/presupuesto.wsdl")
+@WebServiceClient(name = "iPresupuesto", targetNamespace = "http://tempuri.org/", wsdlLocation = "file:/C:/Users/reyes/Documents/Enero-Agosto24/Tenologias%20Para%20la%20Integracion/Servicio%20Web/comprasGit/WebService-Compras/src/main/resources/presupuesto.wsdl")
 public class IPresupuesto_Service
     extends Service
 {
@@ -30,7 +30,7 @@ public class IPresupuesto_Service
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:/C:/Users/juanl/Desktop/WebService-Compras/src/main/resources/presupuesto.wsdl");
+            url = new URL("file:/C:/Users/reyes/Documents/Enero-Agosto24/Tenologias%20Para%20la%20Integracion/Servicio%20Web/comprasGit/WebService-Compras/src/main/resources/presupuesto.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

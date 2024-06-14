@@ -1,5 +1,7 @@
 package com.example.entidades;
 
+import jakarta.persistence.Access;
+import jakarta.persistence.AccessType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,6 +11,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
+@Access(AccessType.FIELD) // Utiliza acceso de campo en lugar de acceso de registro
 public class Carrito {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
