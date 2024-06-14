@@ -2,7 +2,7 @@
 FROM openjdk:17
 
 # Copiar el archivo JAR empaquetado desde tu máquina local al contenedor
-COPY target/compras-0.0.1-SNAPSHOT.jar /compras-0.0.1-SNAPSHOT.jar
+COPY ./target/compras-0.0.1-SNAPSHOT.jar /compras-0.0.1-SNAPSHOT.jar
 
 # Establecer el directorio de trabajo dentro del contenedor
 WORKDIR /
