@@ -15,8 +15,8 @@ Este proyecto es un servicio web desarrollado con **Spring Boot**.
 
 1. **Clonar el repositorio:**
     ```
-    git clone https://github.com/tu-usuario/tu-repositorio.git
-    cd tu-repositorio
+    git clone https://github.com/Frantatita/WebService-Compras.git
+    cd WebService-Compras
     ```
 
 2. **Compilar el proyecto:**
@@ -38,18 +38,18 @@ Este proyecto es un servicio web desarrollado con **Spring Boot**.
 
 1. **Clonar el repositorio:**
     ```
-    git clone https://github.com/tu-usuario/tu-repositorio.git
-    cd tu-repositorio
+    git clone https://github.com/Frantatita/WebService-Compras.git
+    cd WebService-Compras
     ```
 
 2. **Construir la imagen Docker:**
     ```
-    docker build -t nombre-de-tu-imagen .
+    docker build -t servicioSpringboot
     ```
 
 3. **Ejecutar el contenedor:**
     ```
-    docker run -p 8080:8080 nombre-de-tu-imagen
+    docker run -p 8080:8080 servicioSpringboot
     ```
 
 4. **Acceder al servicio:**
