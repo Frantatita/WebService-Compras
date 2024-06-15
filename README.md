@@ -1,6 +1,6 @@
 # 🌐 Servicio Web con Spring Boot
 
-Este proyecto es un servicio web desarrollado con **Spring Boot**. Este README explica cómo configurar y ejecutar el proyecto tanto localmente como usando Docker.
+Este proyecto es un servicio web desarrollado con **Spring Boot**.
 
 ## 🚀 Requisitos
 
